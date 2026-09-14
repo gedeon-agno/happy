@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pour Holali❤️</title>
+
+    <!-- Librairie externe -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="cursor-glow"></div>
+    <canvas id="particle-canvas"></canvas>
+    <canvas id="confetti-canvas"></canvas>
+    <canvas id="heart-canvas"></canvas>
+    <canvas id="spark-canvas"></canvas>
+    <canvas id="balloon-canvas"></canvas>
+
+    <div id="ambient-bg">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+       <!-- Arrière-plan photo (flouté) -->
+    <div id="photo-bg" aria-hidden="true">
+        <img id="photo-bg-a" class="photo-bg-img" src="" alt="">
+        <img id="photo-bg-b" class="photo-bg-img" src="" alt="">
+    </div>
+
+    <section id="scene-0" class="scene active">
+        <div class="content-box">
+            <div class="heart-container"><div class="pulsing-heart">❤️</div></div>
+            <p class="fade-text">Pour une personne très spéciale…</p>
+            <h1 class="hero-name">Holali</h1>
+            <p class="fade-text">J'ai préparé quelque chose pour toi…</p>
+            <button id="btn-start" class="btn-primary glow-btn margin-top-lg">Ouvrir ma surprise ❤️</button>
+        </div>
+    </section>
+
+    <section id="scene-1" class="scene">
+        <div class="content-box">
+            <div id="countdown-display" class="countdown-num">3</div>
+            <div id="bday-text-container" class="hidden">
+                <p class="subtitle-text">Aujourd'hui est un jour spécial…</p>
+                <p class="subtitle-textHighlight">Parce qu'une personne exceptionnelle est née. ❤️</p>
+                <h2 class="title-glow">Joyeux Anniversaire Holali❤️ ❤️</h2>
+            </div>
+        </div>
+    </section>
+
+    <section id="scene-2" class="scene">
+        <div class="content-box">
+            <div class="music-card glassmorphism">
+                <div class="music-icon">🎵</div>
+                <div class="lyrics-container">
+                    <p id="lyric-prev" class="lyric-line prev"></p>
+                    <p id="lyric-current" class="lyric-line current">...</p>
+                    <p id="lyric-next" class="lyric-line next"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="scene-3" class="scene">
+        <div class="content-box wide">
+            <h2 class="scene-title">Aujourd'hui c'est ton jour ✨</h2>
+            <p class="scene-subtitle">Naza</p>
+            <div class="photo-album">
+                <div class="photo-card active">
+                    <div class="photo-frame"><img src="assets/images/photo1.jpeg" alt="Souvenir 1" loading="lazy"></div>
+                    <p class="photo-caption">Ton plus beau sourire ✨</p>
+                </div>
+                <div class="photo-card">
+                    <div class="photo-frame"><img src="assets/images/photo2.jpeg" alt="Souvenir 2" loading="lazy"></div>
+                    <p class="photo-caption">Tu es une personne exceptionnelle ❤️</p>
+                </div>
+                <div class="photo-card">
+                    <div class="photo-frame"><img src="assets/images/photo3.jpeg" alt="Souvenir 3" loading="lazy"></div>
+                    <p class="photo-caption">Tu illumines chaque journée ☀️</p>
+                </div>
+                <div class="photo-card">
+                    <div class="photo-frame"><img src="assets/images/photo4.jpeg" alt="Souvenir 4" loading="lazy"></div>
+                    <p class="photo-caption">Tu as une âme magnifique 💫</p>
+                </div>
+                <div class="photo-card">
+                    <div class="photo-frame"><img src="assets/images/photo5.jpeg" alt="Souvenir 5" loading="lazy"></div>
+                    <p class="photo-caption">Ces instants gravés à jamais 📸</p>
+                </div>
+                <div class="photo-card">
+                    <div class="photo-frame"><img src="assets/images/photo6.jpeg" alt="Souvenir 6" loading="lazy"></div>
+                    <p class="photo-caption">Tu es toujours aussi rayonnante 🌟</p>
+                </div>
+                <div class="photo-card">
+                    <div class="photo-frame"><img src="assets/images/photo7.jpeg" alt="Souvenir 7" loading="lazy"></div>
+                    <p class="photo-caption">Tu as une beauté rare 🌹</p>
+                </div>
+                <div class="photo-card">
+                    <div class="photo-frame"><img src="assets/images/photo8.jpeg" alt="Souvenir 8" loading="lazy"></div>
+                    <p class="photo-caption">Ton rire est un cadeau 💕</p>
+                </div>
+                <div class="photo-card">
+                    <div class="photo-frame"><img src="assets/images/photo9.jpeg" alt="Souvenir 9" loading="lazy"></div>
+                    <p class="photo-caption">Chaque photo raconte ta magie ✨</p>
+                </div>
+                <div class="photo-card">
+                    <div class="photo-frame"><img src="assets/images/photo10.jpeg" alt="Souvenir 10" loading="lazy"></div>
+                    <p class="photo-caption">Tu es une étoile parmi tant d'autres 🌠</p>
+                </div>
+                <div class="photo-card">
+                    <div class="photo-frame"><img src="assets/images/photo11.jpeg" alt="Souvenir 11" loading="lazy"></div>
+                    <p class="photo-caption">Joyeux anniversaire mon cœur 🎂</p>
+                </div>
+            </div>
+            <button id="btn-to-message" class="btn-primary glow-btn margin-top-lg">Continuer ❤️</button>
+        </div>
+    </section>
+
+    <section id="scene-4" class="scene">
+        <div class="content-box glassmorphism padded">
+            <h2 class="salutation">Holali…</h2>
+            <div id="typewriter-text" class="message-body"></div>
+            <button id="btn-to-question" class="btn-primary glow-btn margin-top-lg hidden">Découvrir ❤️</button>
+        </div>
+    </section>
+
+    <section id="scene-5" class="scene">
+        <div class="content-box">
+            <h2 class="question-title">Holali…</h2>
+            <p class="question-sub">Est-ce que tu acceptes de sortir avec moi ? ❤️</p>
+            <p id="dodging-hint" class="hint-text">&nbsp;</p>
+            <div class="interactive-buttons-area">
+                <button id="btn-yes" class="btn-choice yes">OUI ❤️</button>
+                <button id="btn-no" class="btn-choice no">NON 😏</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="scene-6" class="scene">
+        <div class="content-box">
+            <h2 class="big-victory-title">JE SAVAIS QUE TU ALLAIS DIRE OUI 😂❤️</h2>
+            <p class="victory-sub">Maintenant, choisissons notre moment.</p>
+            <button id="btn-to-calendar" class="btn-primary glow-btn margin-top-lg">Choisir la date 🗓️</button>
+        </div>
+    </section>
+
+    <section id="scene-7" class="scene">
+        <div class="content-box glassmorphism padded wide">
+            <div id="step-date">
+                <h3 class="picker-title">Quel jour veux-tu qu'on se retrouve ? ❤️</h3>
+                <div class="calendar-widget">
+                    <div class="calendar-header">
+                        <button id="cal-prev" class="cal-nav">&lt;</button>
+                        <span id="cal-month-year"></span>
+                        <button id="cal-next" class="cal-nav">&gt;</button>
+                    </div>
+                    <div class="calendar-weekdays">
+                        <span>Lun</span><span>Mar</span><span>Mer</span><span>Jeu</span><span>Ven</span><span>Sam</span><span>Dim</span>
+                    </div>
+                    <div id="calendar-days" class="calendar-grid"></div>
+                </div>
+            </div>
+            <div id="step-time" class="hidden">
+                <h3 class="picker-title">Et à quelle heure ? ❤️</h3>
+                <div class="time-picker-custom">
+                    <select id="time-hours" class="time-select"></select>
+                    <span class="time-separator">:</span>
+                    <select id="time-minutes" class="time-select">
+                        <option value="00">00</option>
+                        <option value="15">15</option>
+                        <option value="30">30</option>
+                        <option value="45">45</option>
+                    </select>
+                </div>
+                <button id="btn-confirm-datetime" class="btn-primary glow-btn margin-top-lg">Valider cet horaire ❤️</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="scene-8" class="scene">
+        <div class="content-box">
+            <div class="summary-card glassmorphism">
+                <h3>Notre rendez-vous ❤️</h3>
+                <div class="summary-details">
+                    <p>📅 <span id="summary-date">...</span></p>
+                    <p>🕐 <span id="summary-time">...</span></p>
+                </div>
+                <p class="summary-note">C'est noté ❤️</p>
+            </div>
+            <button id="btn-send-whatsapp" class="btn-primary glow-btn margin-top-lg">Suivant ➡️</button>
+            <p class="ics-subtext">Clique sur "Suivant" pour confirmer 💬</p>
+            <div id="whatsapp-message" class="hidden margin-top-sm">
+                <p>📤 Envoie l'image sur WhatsApp !</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="scene-9" class="scene">
+        <div class="content-box">
+            <h1 class="final-title">C'est officiel ❤️</h1>
+            <p class="final-p">Notre rendez-vous est enregistré.</p>
+            <p class="final-p">Maintenant… prépare-toi. 🤭</p>
+            <div class="secret-box glassmorphism margin-top-lg">
+                <p class="secret-text">Le reste est une surprise. 🤫❤️</p>
+            </div>
+            <div class="final-heart-wrapper margin-top-lg">
+                <div class="pulsing-heart big">❤️</div>
+            </div>
+        </div>
+    </section>
+
+    <audio id="audio-bday" preload="auto" src="assets/audio/joyeux-anniversaire.mp3"></audio>
+    <audio id="audio-naza" preload="auto" src="assets/audio/naza.mp3"></audio>
+
+    <!-- Script principal -->
+    <script src="js/script.js"></script>
+</body>
+</html>
