@@ -575,7 +575,6 @@
             goToScene(5, 'zoom-out');
         };
     }
-
     /* ========================================================
        15. SCÈNE 5 : BOUTON NON QUI ESQUIVE
        ======================================================== */
@@ -583,34 +582,32 @@
         const btnNo = document.getElementById('btn-no');
         const btnYes = document.getElementById('btn-yes');
         const hint = document.getElementById('dodging-hint');
-        const area = document.querySelector('.interactive-buttons-area');
 
         const dodge = (e) => {
             if (e) e.preventDefault();
             state.dodgeCount++;
 
-            const areaRect = area.getBoundingClientRect();
             const yesRect = btnYes.getBoundingClientRect();
             const btnWidth = btnNo.offsetWidth || 100;
             const btnHeight = btnNo.offsetHeight || 50;
-            const maxX = Math.max(areaRect.width - btnWidth - 10, 10);
-            const maxY = Math.max(areaRect.height - btnHeight - 10, 10);
+
+            // 🌍 Toute la fenêtre
+            const maxX = Math.max(window.innerWidth - btnWidth - 20, 20);
+            const maxY = Math.max(window.innerHeight - btnHeight - 20, 20);
 
             let newX, newY, safe = false, attempts = 0;
-            while (!safe && attempts < 50) {
+            while (!safe && attempts < 60) {
                 attempts++;
-                newX = Math.random() * maxX;
-                newY = Math.random() * maxY;
-                const absNewX = areaRect.left + newX;
-                const absNewY = areaRect.top + newY;
+                newX = Math.random() * maxX + 10;
+                newY = Math.random() * maxY + 10;
                 const dist = Math.hypot(
-                    absNewX - (yesRect.left + yesRect.width / 2),
-                    absNewY - (yesRect.top + yesRect.height / 2)
+                    newX - (yesRect.left + yesRect.width / 2),
+                    newY - (yesRect.top + yesRect.height / 2)
                 );
-                if (dist > 120) safe = true;
+                if (dist > 150) safe = true;
             }
 
-            btnNo.style.position = 'absolute';
+            btnNo.style.position = 'fixed';
             btnNo.style.left = `${newX}px`;
             btnNo.style.top = `${newY}px`;
             btnNo.style.transform = `scale(${Math.max(0.6, 1 - state.dodgeCount * 0.03)}) rotate(${(Math.random() - 0.5) * 20}deg)`;
@@ -620,7 +617,7 @@
             const subIdx = state.dodgeCount % CONFIG.dodgeSubTexts.length;
             hint.textContent = CONFIG.dodgeSubTexts[subIdx];
 
-            createSparkExplosion(absNewX + btnWidth / 2, absNewY + btnHeight / 2, 8);
+            createSparkExplosion(newX + btnWidth / 2, newY + btnHeight / 2, 8);
         };
 
         btnNo.addEventListener('touchstart', dodge, { passive: false });
@@ -663,7 +660,6 @@
             }, 3000);
         };
     }
-
     /* ========================================================
        16. SCÈNE 6 → 7
        ======================================================== */
@@ -832,7 +828,7 @@
 
         // 2️⃣ Ouverture WhatsApp auto (500ms après pour laisser le temps au download)
         setTimeout(() => {
-            const message = `OUI ❤️\n\nMarinette a dit OUI !\n\n📅 Date : ${dateStr}\n🕐 Heure : ${timeStr}\n\n(Image en pièce jointe)`;
+            const message = `Oui, avec plaisir ❤️\n\nOn se retrouve le ${dateStr} à ${timeStr}\n\nÀ très bientôt 🤭💕`;
             const whatsappUrl = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
         }, 500);
